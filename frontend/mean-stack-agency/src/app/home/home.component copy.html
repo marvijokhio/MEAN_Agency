@@ -1,0 +1,47 @@
+<div>
+    <h1>{{title}}</h1>
+    <h1>One way Binding - Property binding and event binding</h1>
+    <h2 [style]="green">{{sum()}}</h2>
+
+    <div [style]="alignme">
+    <input #inputmsg type="text" (keyup)="clickMe(inputmsg.value)">
+    <button (click)="clickMe(inputmsg.value)">click Me</button>
+    <h3>{{msg}}</h3>
+  </div>
+  </div>
+  <br>
+  <!-- two way binding-->
+  <h1>Two way Binding with banana tag (ngModel)</h1>
+
+  <input #inputmsg type="text" [(ngModel)]="twowaybindingmessage">
+  <h3>{{twowaybindingmessage}}</h3>
+
+  <!-- Conditional binding-->
+  <h1>Conditional Rendering with (ngIf) directive </h1>
+
+  <button (click)="toggle()">Show/Hide</button>
+  <h3 *ngIf="show">This is the true block Content</h3>
+
+
+  <input #num1 type="text">
+  <input #num2 type="text">
+  <button (click)="showSum(num1.value, num2.value)">Add</button>
+  <ng-template [ngIf]="cond_result" [ngIfThen]="thenmsg" [ngIfElse]="elsemsg"></ng-template>
+  <ng-template #thenmsg><h3>sum is {{thesum}} which is greater then 100. </h3></ng-template>
+  <ng-template #elsemsg><h3>Sum is {{thesum}} whihc is less then 100.</h3></ng-template>
+
+  <div>
+    <h1>Structural Directive for rendering items in a collection (ngForOf)</h1>
+    <button (click)="inc()">+</button>
+    <button (click)="dec()">-</button>
+    <table>
+      <ng-container *ngFor="let salary of salaries; index as i; count as total; even as even; odd as odd">
+        <tr [style]="even ? green : red" style="color: white ;text-align:center">
+        <td style="width: 100px;">{{i}}</td>
+        <td style="width: 200px;">{{salary}}</td>
+        </tr>
+      </ng-container> 
+    </table>
+
+  </div>
+
